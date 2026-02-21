@@ -31,60 +31,6 @@ const cards: Array<{
   },
 ];
 
-const techStack: Array<{ category: string; items: string[] }> = [
-  {
-    category: "Platform & OS",
-    items: ["Linux (Ubuntu, Amazon Linux)"],
-  },
-  {
-    category: "CI/CD & Automation",
-    items: ["Jenkins", "GitHub Actions", "AWS CodeBuild"],
-  },
-  {
-    category: "Version Control",
-    items: ["Git", "GitHub"],
-  },
-  {
-    category: "Containerization & Orchestration",
-    items: ["Docker", "Docker Compose", "Kubernetes"],
-  },
-  {
-    category: "Cloud Platform",
-    items: ["Amazon Web Services (AWS)"],
-  },
-  {
-    category: "AWS Services",
-    items: [
-      "EC2",
-      "Auto Scaling Groups",
-      "S3",
-      "EBS",
-      "VPC (Subnets, Route Tables, IGW, NAT Gateway)",
-      "Application Load Balancer (ALB)",
-      "IAM",
-      "ECR",
-      "SSM Parameter Store",
-      "CloudWatch",
-    ],
-  },
-  {
-    category: "Infrastructure as Code & Config Management",
-    items: ["Terraform", "Ansible", "Packer"],
-  },
-  {
-    category: "Security & DevSecOps",
-    items: ["Trivy", "IAM Least Privilege", "Secrets Management (SSM Parameter Store)"],
-  },
-  {
-    category: "Scripting & Automation",
-    items: ["Shell (Bash)", "Python"],
-  },
-  {
-    category: "Databases",
-    items: ["MySQL", "MongoDB", "DynamoDB"],
-  },
-];
-
 const CI_BADGE_SRC =
   "https://github.com/shiva1693/portfolio-hub/actions/workflows/ci.yml/badge.svg?branch=main";
 
@@ -161,27 +107,57 @@ export default function Home() {
         </Stagger>
       </div>
 
-      {/* Tech Stack */}
+      {/* Core Tech Stack (simple + compact) */}
       <section className="mt-14">
-        <h2 className="text-xl font-semibold">Tech Stack</h2>
+        <h2 className="text-xl font-semibold">Core Tech Stack</h2>
 
-        <div className="mt-6 space-y-6">
-          {techStack.map((stack) => (
-            <div key={stack.category}>
-              <h3 className="text-sm font-semibold text-white/70">{stack.category}</h3>
+        <div className="mt-6 grid gap-6 md:grid-cols-3">
+          {/* Cloud & Infra */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/70">Cloud & Infrastructure</h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {["AWS", "EC2", "VPC", "ALB", "S3", "IAM", "CloudWatch"].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/70"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
 
-              <div className="mt-3 flex flex-wrap gap-2">
-                {stack.items.map((item) => (
+          {/* DevOps & Automation */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/70">DevOps & Automation</h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {["Terraform", "Docker", "Kubernetes", "Jenkins", "GitHub Actions", "Ansible"].map(
+                (item) => (
                   <span
                     key={item}
                     className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/70"
                   >
                     {item}
                   </span>
-                ))}
-              </div>
+                )
+              )}
             </div>
-          ))}
+          </div>
+
+          {/* Programming & Data */}
+          <div>
+            <h3 className="text-sm font-semibold text-white/70">Programming & Data</h3>
+            <div className="mt-3 flex flex-wrap gap-2">
+              {["Python", "Bash", "MySQL", "MongoDB", "DynamoDB"].map((item) => (
+                <span
+                  key={item}
+                  className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/70"
+                >
+                  {item}
+                </span>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
     </main>
