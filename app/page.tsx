@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { FadeUp, Item, Stagger } from "@/components/Motion";
 
@@ -31,8 +30,6 @@ const cards: Array<{
   },
 ];
 
-const CI_BADGE_SRC =
-  "https://github.com/shiva1693/portfolio-hub/actions/workflows/ci.yml/badge.svg?branch=main";
 
 export default function Home() {
   return (
@@ -41,19 +38,6 @@ export default function Home() {
         <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/70">
           <span className="h-2 w-2 rounded-full bg-emerald-400/90" />
           Live • Building in public
-        </div>
-
-        {/* CI Badge */}
-        <div className="mt-6 flex items-center gap-3">
-          <Image alt="CI Status" src={CI_BADGE_SRC} width={120} height={24} unoptimized />
-          <a
-            href="https://github.com/shiva1693/portfolio-hub/actions"
-            target="_blank"
-            rel="noreferrer"
-            className="text-sm text-white/60 hover:text-white transition"
-          >
-            View CI runs →
-          </a>
         </div>
 
         <h1 className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl">

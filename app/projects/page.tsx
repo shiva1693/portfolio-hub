@@ -38,10 +38,6 @@ export default function Home() {
   return (
     <main>
       <FadeUp>
-        <div className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-4 py-2 text-xs text-white/70">
-          <span className="h-2 w-2 rounded-full bg-emerald-400/90" />
-          Live • Building in public
-        </div>
 
         {/* CI Badge */}
         <div className="mt-6 flex items-center gap-3">
