@@ -1,8 +1,14 @@
+import Image from "next/image";
 import Link from "next/link";
 import { FadeUp, Item, Stagger } from "@/components/Motion";
-import Image from "next/image";
 
-const cards = [
+const cards: Array<{
+  title: string;
+  desc: string;
+  href: string;
+  tag: string;
+  external?: boolean;
+}> = [
   {
     title: "Projects",
     desc: "Frontend demos, data tools, automation and more.",
@@ -25,6 +31,63 @@ const cards = [
   },
 ];
 
+const techStack: Array<{ category: string; items: string[] }> = [
+  {
+    category: "Platform & OS",
+    items: ["Linux (Ubuntu, Amazon Linux)"],
+  },
+  {
+    category: "CI/CD & Automation",
+    items: ["Jenkins", "GitHub Actions", "AWS CodeBuild"],
+  },
+  {
+    category: "Version Control",
+    items: ["Git", "GitHub"],
+  },
+  {
+    category: "Containerization & Orchestration",
+    items: ["Docker", "Docker Compose", "Kubernetes"],
+  },
+  {
+    category: "Cloud Platform",
+    items: ["Amazon Web Services (AWS)"],
+  },
+  {
+    category: "AWS Services",
+    items: [
+      "EC2",
+      "Auto Scaling Groups",
+      "S3",
+      "EBS",
+      "VPC (Subnets, Route Tables, IGW, NAT Gateway)",
+      "Application Load Balancer (ALB)",
+      "IAM",
+      "ECR",
+      "SSM Parameter Store",
+      "CloudWatch",
+    ],
+  },
+  {
+    category: "Infrastructure as Code & Config Management",
+    items: ["Terraform", "Ansible", "Packer"],
+  },
+  {
+    category: "Security & DevSecOps",
+    items: ["Trivy", "IAM Least Privilege", "Secrets Management (SSM Parameter Store)"],
+  },
+  {
+    category: "Scripting & Automation",
+    items: ["Shell (Bash)", "Python"],
+  },
+  {
+    category: "Databases",
+    items: ["MySQL", "MongoDB", "DynamoDB"],
+  },
+];
+
+const CI_BADGE_SRC =
+  "https://github.com/shiva1693/portfolio-hub/actions/workflows/ci.yml/badge.svg?branch=main";
+
 export default function Home() {
   return (
     <main>
@@ -34,24 +97,18 @@ export default function Home() {
           Live • Building in public
         </div>
 
-          {/* CI Badge */}
-          <div className="mt-6 flex items-center gap-3">
-            <Image
-              alt="CI Status"
-              src="https://github.com/shiva1693/portfolio-hub/actions/workflows/ci.yml/badge.svg"
-              width={120}
-              height={24}
-              unoptimized
-            />
-            <a
-              href="https://github.com/shiva1693/portfolio-hub/actions"
-              target="_blank"
-              rel="noreferrer"
-              className="text-sm text-white/60 hover:text-white transition"
-            >
-              View CI runs →
-            </a>
-          </div>
+        {/* CI Badge */}
+        <div className="mt-6 flex items-center gap-3">
+          <Image alt="CI Status" src={CI_BADGE_SRC} width={120} height={24} unoptimized />
+          <a
+            href="https://github.com/shiva1693/portfolio-hub/actions"
+            target="_blank"
+            rel="noreferrer"
+            className="text-sm text-white/60 hover:text-white transition"
+          >
+            View CI runs →
+          </a>
+        </div>
 
         <h1 className="mt-6 text-4xl font-semibold tracking-tight md:text-6xl">
           DevOps & Cloud Projects,
@@ -78,21 +135,6 @@ export default function Home() {
             About Me
           </Link>
         </div>
-
-        <div className="mt-10 flex flex-wrap items-center gap-3 text-sm text-white/60">
-          <span className="rounded-xl border border-white/10 bg-white/5 px-3 py-2">
-            Next.js
-          </span>
-          <span className="rounded-xl border border-white/10 bg-white/5 px-3 py-2">
-            Vercel
-          </span>
-          <span className="rounded-xl border border-white/10 bg-white/5 px-3 py-2">
-            Cloudflare
-          </span>
-          <span className="rounded-xl border border-white/10 bg-white/5 px-3 py-2">
-            CI/CD
-          </span>
-        </div>
       </FadeUp>
 
       <div className="mt-12">
@@ -108,9 +150,7 @@ export default function Home() {
                 >
                   <div className="flex items-center justify-between">
                     <span className="text-xs text-white/60">{c.tag}</span>
-                    <span className="text-white/40 group-hover:text-white/70 transition">
-                      →
-                    </span>
+                    <span className="text-white/40 group-hover:text-white/70 transition">→</span>
                   </div>
                   <h3 className="mt-3 text-lg font-semibold">{c.title}</h3>
                   <p className="mt-2 text-sm text-white/70">{c.desc}</p>
@@ -120,6 +160,30 @@ export default function Home() {
           </div>
         </Stagger>
       </div>
+
+      {/* Tech Stack */}
+      <section className="mt-14">
+        <h2 className="text-xl font-semibold">Tech Stack</h2>
+
+        <div className="mt-6 space-y-6">
+          {techStack.map((stack) => (
+            <div key={stack.category}>
+              <h3 className="text-sm font-semibold text-white/70">{stack.category}</h3>
+
+              <div className="mt-3 flex flex-wrap gap-2">
+                {stack.items.map((item) => (
+                  <span
+                    key={item}
+                    className="rounded-xl border border-white/10 bg-white/5 px-3 py-2 text-sm text-white/70"
+                  >
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
     </main>
   );
 }
