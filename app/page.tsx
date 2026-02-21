@@ -46,8 +46,8 @@ export default function Home() {
         </h1>
 
         <p className="mt-5 max-w-2xl text-base text-white/70 md:text-lg">
-          A central hub for my projects, labs, and case studies. Built with Next.js, deployed on
-          Vercel, protected by Cloudflare.
+          A central hub for my projects, labs, and case studies. Built with AWS and deployed on
+          AWS.
         </p>
 
         <div className="mt-8 flex flex-wrap gap-3">
